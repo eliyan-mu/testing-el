@@ -59,10 +59,13 @@ export function AddTodo() {
           className="body-input"
           required
           ref={bodyRef}
+          data-cy="input-button"
         />
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" data-cy="submit-button">
+        Submit
+      </button>
     </form>
   );
 }

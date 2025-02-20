@@ -30,7 +30,7 @@ export function TodoCard(props: TodoCardProps) {
         ["todos"],
         produce((draft: Todo[]) => {
           draft[props.index].completed = isChecked;
-        }),
+        })
       );
 
       return { previousTodos };
@@ -59,7 +59,7 @@ export function TodoCard(props: TodoCardProps) {
         ["todos"],
         produce((draft: Todo[]) => {
           draft.splice(props.index);
-        }),
+        })
       );
 
       return { previousTodos };
@@ -83,16 +83,20 @@ export function TodoCard(props: TodoCardProps) {
         onChange={(e) => {
           completed.mutate(e.currentTarget.checked);
         }}
+        data-cy="check-box"
         disabled={disabled}
       />
 
-      <p
-        className={clsx("todo-text", props.todo.completed && "completed")}
-      >
+      <p className={clsx("todo-text", props.todo.completed && "completed")}>
         {props.todo.body}
       </p>
 
-      <button onClick={() => deleted.mutate()}>Delete</button>
+      <button
+        onClick={() => deleted.mutate()}
+        data-cy={`delete-button-${props.index}`}
+      >
+        Delete
+      </button>
     </div>
   );
 }
